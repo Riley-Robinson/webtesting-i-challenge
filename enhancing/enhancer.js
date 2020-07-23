@@ -6,17 +6,38 @@ module.exports = {
 };
 
 function succeed(item) {
-  return { ...item };
+
+    if (item.enhancement !== 20) {
+      return item.enhancement + 1
+    } else {
+      return item.enhancement
+    }
 }
 
 function fail(item) {
-  return { ...item };
+    if (item.enhancement !== 20) {
+      return item.enhancement + 1
+    } else {
+      return item.enhancement
+    }
 }
 
 function repair(item) {
-  return { ...item };
+  let difference = 0
+  if (item.durability === 100) {
+    return item.durability
+  } else {
+    difference = 100 - item.durability
+  }
+  return difference + item.durability
+
+
 }
 
 function get(item) {
-  return { ...item };
+  if (item.enhancement > 0) {
+    let level = item.enhancement
+    item.name = `[+${level}]` + item.name
+  }
+  return item
 }
